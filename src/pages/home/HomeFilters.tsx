@@ -20,10 +20,13 @@ export function HomeFilters() {
         setState({activeTab: title});
     }
 
-    return (
-        <div className="tw-container">
-
-            <ul className="tw-flex tw-flex-nowrap tw-overflow-x-auto no-scrollbar tw-mt-12">
+    const leftBlock = (
+        <div className="tw-flex tw-flex-col">
+            <ul className={
+                classNames(
+                    "tw-flex tw-overflow-x-auto no-scrollbar tw-w-[calc(100vw-2rem)]",
+                    "md:tw-w-auto"
+                )}>
                 {
                     tabData.map((el, idx) => {//Tab header
                         return (
@@ -54,7 +57,8 @@ export function HomeFilters() {
                             <div key={el.title} className={classNames(
                                 "tw-grid tw-gap-4 tw-grid-cols-1",
                                 { "tw-hidden": state.activeTab !== el.title },
-                                "md:tw-grid-cols-2"
+                                "md:tw-grid-cols-2",
+                                "lg:tw-gap-3.75"
                             )}>
                                 {
                                     el.items.map((elItems:StockItemProp) => {//Stock item
@@ -66,6 +70,49 @@ export function HomeFilters() {
                     })
                 }
             </div>
+        </div>
+    );
+
+    const rightBlock = (
+        <div className={
+            classNames(
+                "tw-hidden",
+                "lg:tw-flex tw-flex-col tw-items-start tw-mt-[6.3125rem] tw-max-w-[29.625rem]"
+            )
+        }>
+
+            <h2 className={
+                classNames(
+                    "tw-text-primary-1000 tw-text-[2.5rem] tw-leading-[2.875rem] tw-tracking-[-0.035em]"
+                )
+            }>
+                All of your assets, now in one place
+            </h2>
+
+            <p className={
+                classNames(
+                    "tw-mt-5 tw-text-[1.125rem] tw-text-primary-1000 tw-leading-[1.625rem] tw-tracking-[-0.02em]"
+                )
+            }>
+                Deposit crypto to the Structure Mobile App and buy stocks, crypto, and other assets in seconds.
+            </p>
+
+            <div className={classNames(
+                "tw-inline-flex tw-items-center tw-justify-center tw-h-15.25 tw-mt-7.5 tw-px-6.25 tw-rounded-lg tw-bg-primary-1000",
+                "tw-text-white tw-font-medium tw-text-[1.125rem] tw-leading-[1.5rem] tw-tracking-[-0.02em]"
+            )}>
+                Browse all assets
+            </div>
+
+        </div>
+    );
+
+    return (
+        <div className="tw-container tw-flex tw-justify-between tw-mt-12 lg:tw-mt-15">
+
+            {leftBlock}
+
+            {rightBlock}
 
         </div>
     );

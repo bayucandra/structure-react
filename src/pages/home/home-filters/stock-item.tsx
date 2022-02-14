@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretUp } from '@fortawesome/free-solid-svg-icons'
+import { ReactComponent as ArrowStockRaised} from "images/arrow-stock-raised.svg";
 
 
 export interface StockItemProp {
@@ -16,7 +17,8 @@ export function StockItem(props:StockItemProp) {
     return (
         <div className={classNames(
             "stock-item", "tw-flex tw-items-center tw-h-[6.5625rem]",
-            "md:tw-max-w-[21rem]"
+            "md:tw-max-w-[21rem]",
+            "lg:tw-max-w-[18.75rem]"
         )}>
             <img src={props.icon} alt={props.title} className="tw-flex-none tw-h-[45px] tw-w-[45px] tw-ml-[12px]"/>
 
@@ -28,7 +30,8 @@ export function StockItem(props:StockItemProp) {
             </div>
 
             <div className="tw-flex tw-items-center tw-mr-[0.9375rem]">
-                <FontAwesomeIcon icon={faCaretUp} className="tw-mr-1" />
+                <FontAwesomeIcon icon={faCaretUp} className="tw-mr-1 tw-block md:tw-hidden" />
+                <ArrowStockRaised className="tw-hidden tw-mr-2.5 md:tw-block"/>
                 <div>{props.percentage}%</div>
             </div>
 
