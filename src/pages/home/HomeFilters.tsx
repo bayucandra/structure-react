@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { Reducer, useReducer, useState } from "react";
+import { Reducer, useReducer } from "react";
 import { StockItem, StockItemProp } from "./home-filters/stock-item";
 import { tabData, TabTitle } from "./home-filters/tab-data";
 
@@ -20,10 +20,6 @@ export function HomeFilters() {
         setState({activeTab: title});
     }
 
-    const tabItemClasses = classNames(
-        "tw-text-primary-1000 tw-font-bold"
-    );
-
     return (
         <div className="tw-container">
 
@@ -34,11 +30,15 @@ export function HomeFilters() {
                             <li key={el.title}
                                 onClick={() => tabClick(el.title)}
                                 className={classNames(
-                                    "tw-block tw-flex-none tw-text-primary-1000",
+                                    "tw-relative tw-block tw-flex-none tw-text-primary-1000 tw-cursor-pointer",
                                     { "tw-font-medium": state.activeTab === el.title },
                                     { "tw-mr-7.5": idx < (tabData.length - 1) }
                                 )}>
                                 {el.title}
+                                <div className={classNames(
+                                    "tw-absolute tw-h-[2px] tw-bg-primary-1000 tw-rounded-sm tw-bottom-0 tw-left-0 tw-right-0",
+                                    { "tw-hidden": state.activeTab !== el.title }
+                                )}></div>
                             </li>
                         );
                     })
