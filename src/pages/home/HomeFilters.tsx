@@ -53,7 +53,8 @@ export function HomeFilters() {
                         return (
                             <div key={el.title} className={classNames(
                                 "tw-grid tw-gap-4 tw-grid-cols-1",
-                                { "tw-hidden": state.activeTab !== el.title }
+                                { "tw-hidden": state.activeTab !== el.title },
+                                "md:tw-grid-cols-2"
                             )}>
                                 {
                                     el.items.map((elItems:StockItemProp) => {//Stock item

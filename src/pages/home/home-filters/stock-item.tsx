@@ -15,7 +15,8 @@ export function StockItem(props:StockItemProp) {
 
     return (
         <div className={classNames(
-            "stock-item", "tw-flex tw-items-center tw-h-[6.5625rem]"
+            "stock-item", "tw-flex tw-items-center tw-h-[6.5625rem]",
+            "md:tw-max-w-[21rem]"
         )}>
             <img src={props.icon} alt={props.title} className="tw-flex-none tw-h-[45px] tw-w-[45px] tw-ml-[12px]"/>
 
